@@ -19,9 +19,9 @@
 <div id="bodyDiv">
 
 	<p style="text-align:center;background:purple;"><br><img src="images/pass1.png" width="330px" height="225px" alt=""><br><font style="font-size:100px"><script>var t = new Date();
-              var hour = t.date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-              var minute = t.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-              var second = t.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+              var hour = t.date.getHours();
+              var minute = t.getMinutes();
+              var second = t.getSeconds();
               var data= hour+":"+minute+":"+second;
 	      document.write(data);
               </script></font></p>
