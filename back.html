@@ -17,15 +17,7 @@
 }
 </style>
 <div id="bodyDiv">
-	<script>var va4=localStorage.value4
-      </script>
-	<p style="text-align:center;background:red;"><br><img src="images/pass1.png" width="330px" height="225px" alt=""><br><font style="font-size:100px"><script>var t = new Date();
-              var hour = t.getHours()< 10 ? "0" + t.getHours() : t.getHours();
-              var minute = t.getMinutes()< 10 ? "0" + t.getMinutes() : t.getMinutes();
-              var second = t.getSeconds()< 10 ? "0" + t.getSeconds() : t.getSeconds();
-	      var data= hour+":"+minute+":"+second;	
-	      document.write(data);
-              </script></font></p>
+	<p style="text-align:center;background:lime;"><br><img src="images/pass1.png" width="330px" height="225px" alt=""><br><font style="font-size:100px"><span id='theDate'></span></font></p>
 	<div class="weui-cells__title">学生返校通行证</div>
 	<div class="weui-cells">
 		<div class="weui-cell  weui-cell_example">
@@ -70,5 +62,32 @@
 	</div>
 </div>
 <script type="text/javascript" src="js/Untitled-1.js"></script>
+	<script>
+	function dateFormat(fmt, date) {
+    let ret;
+    const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "m+": (date.getMonth() + 1).toString(),     // 月
+        "d+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "M+": date.getMinutes().toString(),         // 分
+        "S+": date.getSeconds().toString()          // 秒
+        // 有其他格式化字符需求可以继续添加，必须转化成字符串
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+    };
+    return fmt;
+	}
+	var d = new Date();
+		document.getElementById("theDate").innerText=dateFormat("HH:MM:SS", d);
+	window.setInterval(function(){
+		var d = new Date();
+		document.getElementById("theDate").innerText=dateFormat("HH:MM:SS", d);
+	},1000)
+</script>
 </body>
 </html>
